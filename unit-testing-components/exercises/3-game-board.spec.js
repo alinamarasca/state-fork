@@ -1,35 +1,35 @@
-import { renderGameBoard } from './3-game-board.js';
+import { renderGameBoard } from "./3-game-board.js";
 
-describe('renderGameBoard: renders a list of user screen names and real names', () => {
-  describe('tictactoe: X won on the middle column', () => {
+describe("renderGameBoard: renders a list of user screen names and real names", () => {
+  describe("tictactoe: X won on the middle column", () => {
     const boardData = [
-      ['O', 'X', 'X'],
-      ['X', 'X', 'O'],
-      ['O', 'X', 'O'],
+      ["O", "X", "X"],
+      ["X", "X", "O"],
+      ["O", "X", "O"],
     ];
     const actual = renderGameBoard(boardData);
 
     testGameBoard(actual, boardData);
   });
 
-  describe('empty mancala board', () => {
+  describe("empty mancala board", () => {
     const boardData = [
-      ['', ''],
-      ['', ''],
-      ['', ''],
-      ['', ''],
-      ['', ''],
-      ['', ''],
+      ["", ""],
+      ["", ""],
+      ["", ""],
+      ["", ""],
+      ["", ""],
+      ["", ""],
     ];
     const actual = renderGameBoard(boardData);
 
     testGameBoard(actual, boardData);
   });
 
-  describe('Play Ball!', () => {
+  describe("Play Ball!", () => {
     const boardData = [
-      ['p', 'l', 'a', 'y'],
-      ['b', 'a', 'l', 'l'],
+      ["p", "l", "a", "y"],
+      ["b", "a", "l", "l"],
     ];
     const actual = renderGameBoard(boardData);
 
@@ -39,7 +39,7 @@ describe('renderGameBoard: renders a list of user screen names and real names', 
 
 function testGameBoard(actual, boardData) {
   it('has tagName: "TABLE"', () => {
-    expect(actual.tagName).toEqual('TABLE');
+    expect(actual.tagName).toEqual("TABLE");
   });
   it(`has childElementCount: ${boardData.length}`, () => {
     expect(actual.childElementCount).toEqual(boardData.length);
@@ -50,7 +50,7 @@ function testGameBoard(actual, boardData) {
       const row = boardData[i];
       const actualChild = actual.children[i];
       it('has tagName: "TR"', () => {
-        expect(actualChild).toEqual('tagName', 'TR');
+        expect(actualChild.tagName).toEqual("TR");
       });
       it(`has childElementCount: ${row.length}`, () => {
         expect(actualChild.childElementCount).toEqual(row.length);
@@ -61,7 +61,7 @@ function testGameBoard(actual, boardData) {
           const filler = row[j];
           const actualChildChild = actualChild.children[j];
           it('has tagName: "TD"', () => {
-            expect(actualChildChild.tagName).toEqual('TD');
+            expect(actualChildChild.tagName).toEqual("TD");
           });
           it(`has innerText: "${filler}"`, () => {
             expect(actualChildChild.innerText).toEqual(filler);
